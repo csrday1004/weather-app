@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.bg{
+  width: 100vw;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+  background-image: url("https://www.noaa.gov/sites/default/files/styles/landscape_width_1275/public/legacy/image/2019/Jun/iStock-477110708%20%281%29.jpg?itok=wCLnw6I9");
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}  
+
+.t{
+  border: 1px solid black;
+}
+
+.container{
+  max-width: 500px;
+  text-align: center;
+  width: 50%;
   color: white;
+}  
+
+.weather-info{
+  border: 2px solid white;
+  padding: 30px;
+  border-radius: 15px;
+  background: #00000079;
 }
 
-.App-link {
-  color: #61dafb;
+.location{
+  
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.temps{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: greenyellow;
+}
+.temp{
+  margin: 10px;
+  font-size: 30px;
+}
+
+.weather{
+  font-size: 30px;
+  color: aqua;
+}
+
+
+.buttons{
+  display: flex;
+  padding: 20px;
+  border-radius: 30px;
+  background: black;
+  margin-top: 30px;
+
+}
+.buttons button{
+  margin: 5px;
+  height: 30px;
+  width: 100%;
+  background: rgb(255, 200, 0);
+  border:none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons button.selected{
+  background: #000;
+  color: rgb(255, 200, 0);
+  border: 1px solid rgb(255, 200, 0);
 }
