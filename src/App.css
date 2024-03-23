@@ -10,12 +10,9 @@
   justify-content: center;
 }  
 
-.t{
-  border: 1px solid black;
-}
-
 .container{
-  max-width: 500px;
+  min-width: 300px;
+  max-width: 800px;
   text-align: center;
   width: 50%;
   color: white;
@@ -51,12 +48,21 @@
 
 .buttons{
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   border-radius: 30px;
   background: black;
   margin-top: 30px;
-
 }
+
+@media screen and (min-width: 900px) {
+  .buttons{
+    flex-direction: row;
+  }
+}
+
 .buttons button{
   margin: 5px;
   height: 30px;
