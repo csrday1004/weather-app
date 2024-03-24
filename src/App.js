@@ -1,4 +1,4 @@
-import { useEffect, useState, CSSProperties } from "react";
+import { useEffect, useState, CSSProperties, useRef } from "react";
 import "./App.css";
 import Button from "./components/Button";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -24,6 +24,12 @@ function App() {
   const cities = ["paris", "new york", "tokyo", "seoul"];
   const [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#ffffff");
+  const [selectBtn, setSelectBtn] = useState();
+
+  const currentLocationRef = useRef(null);
+  const removeClass = () => {
+    currentLocationRef.current.classList.remove("selected");
+  };
 
   const API_key = "aaf482e72ea857208ac4c9c8f4f60b6e";
 
@@ -85,12 +91,33 @@ function App() {
         ) : (
           <>
             <WeatherBox city={city} temp={temp} weather={weather} />
+
             <div className="지역버튼박스 buttons">
-              <button className="selected" onClick={getCurrentLocation}>
+              {/* 시티가  */}
+              <button
+                ref={currentLocationRef}
+                className="selected"
+                onClick={() => {
+                  currentLocationRef.current.classList.add("selected");
+                  getCurrentLocation();
+                }}
+              >
                 현재위치
               </button>
               {cities.map((e, i) => {
-                return <Button key={i} city={e} setCity={setCity} />;
+                // 누른 버튼이랑 현재버튼의 인덱스가 같으면 클래스 추가?
+                return (
+                  <Button
+                    key={i}
+                    city={e}
+                    setCity={setCity}
+                    removeClass={removeClass}
+                    isSelected={selectBtn === i}
+                    onClick={() => {
+                      setSelectBtn(i);
+                    }}
+                  />
+                );
               })}
             </div>
           </>

@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Button = ({city,setCity}) => {
+const Button = ({city,setCity,removeClass,isSelected}) => {
   return (
-    <button className="타지역" onClick={()=>{
+    <button className={isSelected ? 'selected' : ''} onClick={(e)=>{
+      removeClass()
       setCity(city)
     }}>{city}</button>
   )
