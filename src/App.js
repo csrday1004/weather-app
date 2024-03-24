@@ -53,7 +53,7 @@ function App() {
   // 지역위치로 날씨 불러오기
   const getWeatherByCityName = async () => {
     try{
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&limit=5&appid=${API_key}`;
+    let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&limit=5&appid=${API_key}`;
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
