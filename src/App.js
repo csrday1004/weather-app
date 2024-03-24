@@ -35,6 +35,7 @@ function App() {
 
   // 현재위치로 날씨 불러오기
   const getWeatherByCurrentLocation = async (lat, lon) => {
+ try{
     let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_key}`;
     let response = await fetch(url);
     let data = await response.json();
@@ -43,10 +44,15 @@ function App() {
     setTemp(data.main.temp);
     SetWeather(data.weather[0].main);
     setLoading(false);
+  }catch(error){
+    console.error('에러남',error)
+    setLoading(false)
+  }
   };
 
   // 지역위치로 날씨 불러오기
   const getWeatherByCityName = async () => {
+    try{
     let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&limit=5&appid=${API_key}`;
     let response = await fetch(url);
     let data = await response.json();
@@ -54,6 +60,10 @@ function App() {
     setTemp(data.main.temp);
     SetWeather(data.weather[0].main);
     setLoading(false);
+    }catch(error){
+      console.error('에러남',error)
+      setLoading(false)
+    }
   };
 
   // 현재위치 불러오기
@@ -108,14 +118,14 @@ function App() {
                 // 누른 버튼이랑 현재버튼의 인덱스가 같으면 클래스 추가?
                 return (
                   <Button
+                    onClick={() => {
+                      setSelectBtn(i);
+                    }}
                     key={i}
                     city={e}
                     setCity={setCity}
                     removeClass={removeClass}
                     isSelected={selectBtn === i}
-                    onClick={() => {
-                      setSelectBtn(i);
-                    }}
                   />
                 );
               })}
