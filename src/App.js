@@ -119,16 +119,14 @@ function App() {
               {cities.map((e, index) => {
                 // 누른 버튼이랑 현재버튼의 인덱스가 같으면 클래스 추가?
                 return (
-                
                   <Button
                     city={e}
                     setCity={setCity}
                     removeClass={removeClass}
                     index={index}
                     setSelectBtn={setSelectBtn}
-                    selectBtn={selectBtn}
+                    selectBtn={selectBtn} 
                   />
-                
                 );
               })}
             </div>
