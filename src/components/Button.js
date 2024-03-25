@@ -1,9 +1,10 @@
 import React from 'react'
 
-const Button = ({city,setCity,removeClass,isSelected}) => {
-  console.log('선택된나?',isSelected)
+const Button = ({city,setCity,removeClass,setSelectBtn,index,selectBtn}) => {
+  
   return (
-    <button className={isSelected ? 'selected' : ''} onClick={(e)=>{
+    <button className={selectBtn===index ? 'selected' : ''} onClick={(e)=>{
+      setSelectBtn(index)
       removeClass()
       setCity(city)
     }}>{city}</button>
@@ -11,3 +12,5 @@ const Button = ({city,setCity,removeClass,isSelected}) => {
 }
 
 export default Button
+
+//selected={selectBtn===index}

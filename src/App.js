@@ -24,9 +24,10 @@ function App() {
   const cities = ["paris", "new york", "tokyo", "seoul"];
   const [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#ffffff");
-  const [selectBtn, setSelectBtn] = useState();
+  const [selectBtn, setSelectBtn] = useState(false);
 
   const currentLocationRef = useRef(null);
+  // 현재위치버튼의 css클래스 지우기
   const removeClass = () => {
     currentLocationRef.current.classList.remove("selected");
   };
@@ -110,23 +111,24 @@ function App() {
                 onClick={() => {
                   currentLocationRef.current.classList.add("selected");
                   getCurrentLocation();
+                  setSelectBtn(false)
                 }}
               >
                 현재위치
               </button>
-              {cities.map((e, i) => {
+              {cities.map((e, index) => {
                 // 누른 버튼이랑 현재버튼의 인덱스가 같으면 클래스 추가?
                 return (
+                
                   <Button
-                    onClick={() => {
-                      setSelectBtn(i);
-                    }}
-                    key={i}
                     city={e}
                     setCity={setCity}
                     removeClass={removeClass}
-                    isSelected={selectBtn === i}
+                    index={index}
+                    setSelectBtn={setSelectBtn}
+                    selectBtn={selectBtn}
                   />
+                
                 );
               })}
             </div>
